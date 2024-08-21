@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import database from './config/database.js';
 import webRoute from './routes/web.js';
 const app = express();
+app.use(express.json());
 dotenv.config();
-
+database.connect();
 app.use(webRoute);
 
 let mode = process.env.MODE;
